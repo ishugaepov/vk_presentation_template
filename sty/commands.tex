@@ -1,0 +1,182 @@
+% Dynamically sized mid bar.
+\newcommand{\bigmid}{\mathrel{\Big|}}
+
+% ---- Colors and Notes ----
+\definecolor{dblue}{RGB}{39,135,245}
+\definecolor{dlblue}{RGB}{216, 235, 255}
+\definecolor{dgreen}{RGB}{124, 155, 127}
+\definecolor{dpink}{RGB}{207, 166, 208}
+\definecolor{dyellow}{RGB}{255, 248, 199}
+\definecolor{dgray}{RGB}{46, 49, 49}
+\definecolor{dgray2}{RGB}{200, 200, 200}
+\definecolor{ddefblue}{RGB}{226, 239, 254}
+
+% URL
+\newcommand{\durl}[1]{\textcolor{dblue}{\underline{\url{#1}}}}
+
+% Circled Numbers
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw=dgray2,inner sep=1.2pt,fill=dgray2,line width=1mm] (char) {\normalsize{#1}};}}
+% From: http://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+
+% Circled checkmark
+\newcommand*\circledmark[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1.2pt,line width=0.3mm] (char) {\checkmark};}}
+
+% Under set numbered subset of equation
+\newcommand{\numeq}[3]{\underset{\textcolor{#2}{\circled{#1}}}{\textcolor{#2}{#3}}}
+
+% ---- Abbreviations -----
+\newcommand{\tc}[2]{\textcolor{#1}{#2}}
+\newcommand{\ubr}[1]{\underbrace{#1}}
+\newcommand{\uset}[2]{\underset{#1}{#2}}
+\newcommand{\eps}{\varepsilon}
+
+% Typical limit:
+\newcommand{\nlim}{\underset{n \rightarrow \infty}{\lim}}
+\newcommand{\nsum}{\sum_{i = 1}^n}
+\newcommand{\nprod}{\prod_{i = 1}^n}
+
+% Add an hrule with some space
+\newcommand{\spacerule}{\begin{center}\hdashrule{2cm}{1pt}{1pt}\end{center}}
+
+% Mathcal and Mathbb
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\indic}{\mathbbm{1}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\bR}{\mathbb{R}}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\la}{\leftarrow}
+
+% argmin, argmax.
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+% softmax
+\DeclareMathOperator*{\softmax}{softmax}
+
+% ---- Figures, Boxes, Theorems, Etc. ----
+
+% Basic Image
+\newcommand{\img}[2]{
+\begin{center}
+\includegraphics[scale=#2]{#1}
+\end{center}}
+
+% Put a fancy box around things.
+\newcommand{\dbox}[1]{
+\begin{mdframed}[roundcorner=0pt, backgroundcolor=ddefblue, linewidth=0]
+\vspace{1mm}
+{#1}
+\vspace{1mm}
+\end{mdframed}
+}
+
+\newcommand{\dblock}[2]{
+\begin{tabular}{l}
+    \fontsize{30}{40}\selectfont \textbf{#1} \\[2mm]
+    \fontsize{10}{14}\selectfont #2
+\end{tabular}
+}
+
+\newcommand{\dblocksep}[2]{
+\begin{tabular}{p{3cm}}
+    \fontsize{20}{30}\selectfont \textbf{#1} \\
+    \color{VKblue}\rule[1ex]{8ex}{2pt} \\
+    \fontsize{8}{12}\selectfont #2
+\end{tabular}
+}
+
+%  --- PROOFS ---
+
+% Inner environment for Proofs
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline = false,
+  leftmargin=10pt,
+  rightmargin=0pt,
+  innertopmargin=0pt,
+  innerbottommargin=0pt
+]{innerproof}
+
+% Proof Command
+%\newenvironment{dproof}{\begin{proof} \text{\vspace{2mm}} \begin{innerproof}}{\end{innerproof}\end{proof}\vspace{4mm}}
+\newenvironment{dproof}[1][Proof]{\begin{proof}[#1] \text{\vspace{2mm}} \begin{innerproof}}{\end{innerproof}\end{proof}\vspace{4mm}}
+
+
+% Dave Definition
+\newcounter{DaveDefCounter}
+\setcounter{DaveDefCounter}{1}
+
+\newcommand{\ddef}[2]
+{
+\begin{mdframed}[roundcorner=0pt, backgroundcolor=ddefblue,linewidth=0]
+\vspace{1mm}
+{\bf Definition \theDaveDefCounter} (#1): {\it #2}
+\stepcounter{DaveDefCounter}
+\vspace{1mm}
+\end{mdframed}
+}
+
+% Block Quote
+\newenvironment{dblockquote}[2]{
+\begin{blockquote}
+#2
+\vspace{-2mm}\hspace{10mm}{#1} \\
+\end{blockquote}}
+
+% Algorithm
+\newenvironment{dalg}[1]
+{\begin{algorithm}\caption{#1}\begin{algorithmic}}
+{\end{algorithmic}\end{algorithm}}
+
+% Dave Table
+\newenvironment{dtable}[1]
+{\begin{figure}[h]
+\centering
+\begin{tabular}{#1}\toprule}
+{\bottomrule
+\end{tabular}
+\end{figure}}
+
+% For numbering the last of an align*
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+
+
+\newtheorem{assumption}{Assumption}
+\newtheorem{conjecture}{Conjecture}
+% \newtheorem{corollary}{Corollary}
+\newtheorem{claim}{Claim}
+% \newtheorem{example}{Example}
+% \newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+% \newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\newcommand{\vecx}{{\bf x}}
+\newcommand{\vecy}{{\bf y}}
+\newcommand{\vecw}{{\bf w}}
+\newcommand{\vecb}{{\bf b}}
+\newcommand{\vech}{{\bf h}}
+\newcommand{\vecv}{{\bf v}}
+\newcommand{\veci}{{\bf i}}
+\newcommand{\vecj}{{\bf j}}
+\newcommand{\vecz}{{\bf z}}
+\newcommand{\vecs}{{\bf s}}
+\newcommand{\vecp}{{\bf p}}
+\newcommand{\vecq}{{\bf q}}
+\newcommand{\vecu}{{\bf u}}
+\newcommand{\vece}{{\bf e}}
+\newcommand{\vecalpha}{{\bm \alpha}}
+\newcommand{\vecbeta}{{\bm \beta}}
+\newcommand{\vecnull}{{\bf 0}}
+\newcommand{\vecone}{{\bf 1}}
+
+\newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
+
+\def\Var{{\mathbb{V}ar}\,}
+\def\E{{\mathbb{E}}\,}
+\def\P{{\mathbb{P}}}
+\DeclareMathOperator{\sign}{sign}

@@ -1,0 +1,52 @@
+\mode<presentation>
+
+\setbeamersize{text margin left=42pt,text margin right=42pt}
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true]
+
+\makeatletter
+\setbeamertemplate{frametitle}{
+    \vspace*{10pt}
+    \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+    \@tempdima=\textwidth%
+    \advance\@tempdima by\beamer@leftmargin%
+    \advance\@tempdima by\beamer@rightmargin%
+    \hspace*{25pt} %%%%%%%%%%%%% For example insert shift to right
+    \begin{beamercolorbox}[sep=0.3cm,left,wd=\the\@tempdima]{frametitle}
+        \usebeamerfont{frametitle}%
+        \vbox{}\vskip-1ex%
+        \if@tempswa\else\csname beamer@ftecenter\endcsname\fi%
+        \strut\textbf{\insertframetitle}\strut\par%
+        {%
+            \ifx\insertframesubtitle\@empty%
+            \else%
+            {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+            \fi
+        }%
+        \vskip-1ex%
+        \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+    \end{beamercolorbox}%
+}
+\makeatother
+
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}{\hspace{1.3em}\inserttocsubsection \par}
+
+\AtBeginSection[] {
+\ifnumcomp{\value{section}}{=}{1}{}
+  {
+  \begin{frame}[t]
+    \frametitle{Table of Contents}
+    \tableofcontents[sectionstyle=show/shaded,hideothersubsections]
+  \end{frame}
+  }
+} 
+
+\setbeamertemplate{footline}{%
+    \hfill
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \insertframenumber/\inserttotalframenumber\hspace*{2em}\vspace*{1em}
+}
+
+\mode
+<all>

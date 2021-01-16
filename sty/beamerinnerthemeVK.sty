@@ -1,0 +1,45 @@
+\mode<presentation>
+
+\usepackage[export]{adjustbox}
+
+\def\maketitle{%
+    {
+    \setbeamercolor{background canvas}{bg=VKblue}
+    \frame[plain,noframenumbering]{
+        \begin{minipage}[b][\paperheight]{\textwidth}
+            \vfill
+            \begin{figure}
+                % \vspace*{-1cm}
+                \includegraphics[width=0.07\linewidth, left]{sty/vk-logo.png}
+            \end{figure}
+            \vspace{3cm}
+            \usebeamerfont{title}\usebeamercolor[fg]{title}\textbf{\inserttitle} \\
+            $ $ \\
+            \usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor
+            \vfill
+            \vspace*{1mm}
+        \end{minipage}
+        
+    }
+    }
+}
+
+\setbeamertemplate{endpage}{%
+    {
+    \setbeamercolor{background canvas}{bg=VKblue}
+    \frame[plain,noframenumbering]{
+        \begin{figure}
+            \vspace*{5mm}
+            \includegraphics[width=0.17\linewidth, left]{sty/ml-bd.png}
+        \end{figure}
+        \vspace{3cm}
+        \usebeamerfont{title}\usebeamercolor[fg]{title} \textbf{Вопросы?} \\
+        \usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor
+        \vfill
+        \vspace*{5mm}
+    }
+    }
+}
+
+\mode
+<all>
